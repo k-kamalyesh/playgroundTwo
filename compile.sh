@@ -1,2 +1,2 @@
 #!/bin/bash
-g++ ./avatar/genes/*.cpp  -o ./dist/game.out
+g++ *.cpp ./avatar/genes/*.cpp  -o ./dist/game.out
