@@ -18,17 +18,17 @@ public:
         struct sPoints _initial_points;
         switch (species)
         {
-        case NONE:
+        case SPECIES_NONE:
             _initial_points.magic_points = 0;
             _initial_points.health_points = 0;
             _initial_points.intelligence_points = 0;
             break;
 
-        case HUMAN:
+        case SPECIES_HUMAN:
         default:
-            _initial_points.magic_points = 0;
-            _initial_points.health_points = 0;
-            _initial_points.intelligence_points = 0;
+            _initial_points.magic_points = 10;
+            _initial_points.health_points = 10;
+            _initial_points.intelligence_points = 10;
             break;
         }
         return _initial_points;
@@ -36,15 +36,19 @@ public:
 
     static struct sPoints getMinimumPoints(eSpecies species, eLevel level)
     {
+        if (level == LEVEL_NONE)
+        {
+            return getInitialPoints(species);
+        }
         struct sPoints _minimum_points;
         switch (species)
         {
-        case NONE:
+        case SPECIES_NONE:
             switch (level)
             {
-            case BEGINNER:
-            case INTERMEDIATE:
-            case ADVANCED:
+            case LEVEL_BEGINNER:
+            case LEVEL_INTERMEDIATE:
+            case LEVEL_ADVANCED:
             default:
                 _minimum_points.magic_points = 0;
                 _minimum_points.health_points = 0;
@@ -52,21 +56,21 @@ public:
             }
             break;
 
-        case HUMAN:
+        case SPECIES_HUMAN:
         default:
             switch (level)
             {
-            case BEGINNER:
+            case LEVEL_BEGINNER:
                 _minimum_points.magic_points = 10;
                 _minimum_points.health_points = 10;
                 _minimum_points.intelligence_points = 10;
                 break;
-            case INTERMEDIATE:
+            case LEVEL_INTERMEDIATE:
                 _minimum_points.magic_points = 100;
                 _minimum_points.health_points = 100;
                 _minimum_points.intelligence_points = 100;
                 break;
-            case ADVANCED:
+            case LEVEL_ADVANCED:
             default:
                 _minimum_points.magic_points = 1000;
                 _minimum_points.health_points = 1000;
@@ -79,15 +83,18 @@ public:
 
     static struct sPoints getMaximumPoints(eSpecies species, eLevel level)
     {
+        if(level == LEVEL_NONE){
+            return getInitialPoints(species);
+        }
         struct sPoints _maximum_points;
         switch (species)
         {
-        case NONE:
+        case SPECIES_NONE:
             switch (level)
             {
-            case BEGINNER:
-            case INTERMEDIATE:
-            case ADVANCED:
+            case LEVEL_BEGINNER:
+            case LEVEL_INTERMEDIATE:
+            case LEVEL_ADVANCED:
             default:
                 _maximum_points.magic_points = 0;
                 _maximum_points.health_points = 0;
@@ -95,21 +102,21 @@ public:
             }
             break;
 
-        case HUMAN:
+        case SPECIES_HUMAN:
         default:
             switch (level)
             {
-            case BEGINNER:
+            case LEVEL_BEGINNER:
                 _maximum_points.magic_points = 99;
                 _maximum_points.health_points = 99;
                 _maximum_points.intelligence_points = 99;
                 break;
-            case INTERMEDIATE:
+            case LEVEL_INTERMEDIATE:
                 _maximum_points.magic_points = 999;
                 _maximum_points.health_points = 999;
                 _maximum_points.intelligence_points = 999;
                 break;
-            case ADVANCED:
+            case LEVEL_ADVANCED:
             default:
                 _maximum_points.magic_points = 9999;
                 _maximum_points.health_points = 9999;
