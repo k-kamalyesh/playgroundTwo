@@ -6,8 +6,8 @@
 using namespace std;
 
 enum eSpecies {
-    NONE,
-    HUMAN
+    SPECIES_NONE,
+    SPECIES_HUMAN
 };
 
 class SCSpeciesInfo
@@ -18,11 +18,11 @@ public:
         std::string str;
         switch (species)
         {
-        case eSpecies::NONE:
+        case SPECIES_NONE:
             str = std::string("NONE");
             return str;
         default:
-        case eSpecies::HUMAN:
+        case SPECIES_HUMAN:
             str = std::string("HUMAN");
             return str;
         }
