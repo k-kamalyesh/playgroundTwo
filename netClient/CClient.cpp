@@ -17,7 +17,7 @@ private:
     struct sockaddr_in __serv_addr;
     char *__hello = "Hello from client";
     char __buffer[1024 * 10] = {0};
-	bool __overwriteContinueLoop = true;
+    bool __overwriteContinueLoop = true;
 
     int _inet_pton(int af, const char *__restrict cp, void *__restrict buf)
     {
@@ -112,7 +112,8 @@ public:
     {
         loop();
     }
-    void stop(){
+    void stop()
+    {
         // need to invoke using threads?
         // multithreading!?
         __overwriteContinueLoop = false;
