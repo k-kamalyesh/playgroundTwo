@@ -5,6 +5,7 @@
 #include <netinet/in.h>
 #include <iostream>
 #include <string.h>
+#include "../commons/CGamePlayParser.cpp"
 
 #ifndef __C_SERVER_H
 #define __C_SERVER_H
@@ -15,6 +16,7 @@ using namespace std;
 class CServer
 {
 private:
+	CGamePlayParser gameParser;
 	int __domain;
 	__socket_type __type = SOCK_STREAM;
 	int __protocol = 0;
@@ -25,7 +27,7 @@ private:
 	int __opt = 0;
 	int __addrlen = sizeof(__address);
 	char __buffer[1024 * 10] = {0};
-	char *__hello = "Hello from server";
+	char *__hello = "OK"; // Hello from server
 	bool __overwriteContinueLoop = true;
 
 	int _socket(int domain, __socket_type type, int protocol)
@@ -110,6 +112,7 @@ protected:
 			}
 			else
 			{
+				gameParser.process(msg);
 				_send(__new_socket, __hello, strlen(__hello), 0);
 				printf("message sent\n");
 			}
@@ -132,7 +135,8 @@ public:
 	void pause()
 	{
 	}
-	void stop(){
+	void stop()
+	{
 		__overwriteContinueLoop = false;
 	}
 };

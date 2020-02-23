@@ -78,10 +78,13 @@ protected:
     void loop()
     {
         std::string message;
+        char c;
         bool continueLoop = true;
         _send(__sock, __hello, 0);
         do
         {
+            // const char *msg;
+            // msg = &c;
             std::cin >> message;
             const char *msg = message.c_str();
             _send(__sock, msg, 0);
