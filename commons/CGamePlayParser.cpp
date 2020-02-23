@@ -14,6 +14,7 @@ private:
     bool verticle;
     bool attack;
     bool defense;
+
 protected:
     bool selectPlay(char c)
     {
@@ -77,7 +78,8 @@ public:
         {
             selectPlay(input.at(i));
             pos = position.getPosition();
-            std::cout << pos[0] << "," << pos[1] << "," << pos[2] << std::endl;
+            std::cout << pos[0] << "," << pos[1] << "," << pos[2] << std::endl
+                      << pos[3] << "," << pos[4] << std::endl;
         }
         return true;
     }
