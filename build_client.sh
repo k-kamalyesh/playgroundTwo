@@ -1,2 +1,2 @@
 #!/bin/bash
-g++ netClient/*.cpp ./avatar/genes/*.cpp  -o ./dist/client.out
+g++ commons/*.cpp netClient/*.cpp ./avatar/genes/*.cpp  -o ./dist/client.out
