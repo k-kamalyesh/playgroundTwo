@@ -66,7 +66,7 @@ protected:
     }
 
 public:
-    CGame()
+    CGamePlayParser()
     {
         verticle = false;
     }
